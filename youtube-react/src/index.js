@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-// import App from './App';
-import InputSearch from './components/input_search';
 import registerServiceWorker from './registerServiceWorker';
+import InputSearch from './components/input_search';
+import VideoDetail from './components/video_detail';
 
 
 class App extends Component {
@@ -11,6 +11,7 @@ class App extends Component {
     return (
       <div>
         <InputSearch />
+        <VideoDetail />
       </div>
     );
   }
