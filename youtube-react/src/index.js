@@ -14,6 +14,8 @@ class App extends Component {
   constructor(props) {
   	super(props);
   	this.state = {
+  		videos: [],
+  		selectedVideo: null
   	}
   	this.youTubeSearch();
   }
@@ -22,6 +24,12 @@ class App extends Component {
   	axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&key=${API_KEY}&q=dogs`)
   		.then(response => {
   			console.log('this is the response ', response.data)
+  			this.setState({
+  				videos: response.data.items,
+  				selectedVideo: response.data.items[0]
+  			})
+  			console.log('this is videos ', this.state.videos);
+  			console.log('this is selectedVideo ', this.state.selectedVideo);
   		})
   		.catch(error => {
   			console.log('This is the error: ', error)
@@ -33,7 +41,7 @@ class App extends Component {
     return (
       <div>
         <InputSearch />
-        <VideoDetail />
+        <VideoDetail selectedVideo={this.state.selectedVideo}/>
         <VideoList />
       </div>
     );
