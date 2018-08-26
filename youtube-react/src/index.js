@@ -42,7 +42,7 @@ class App extends Component {
       <div>
         <InputSearch />
         <VideoDetail selectedVideo={this.state.selectedVideo}/>
-        <VideoList />
+        <VideoList videos={this.state.videos}/>
       </div>
     );
   }
