@@ -19,9 +19,12 @@ class App extends Component {
   }
 
   youTubeSearch() {
-  	axios.get('https://www.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyDhW0fadhsCTrSc1jaHKa0tJ6J6paXyvDs&q=dogs')
+  	axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&key=${API_KEY}&q=dogs`)
   		.then(response => {
   			console.log('this is the response ', response.data)
+  		})
+  		.catch(error => {
+  			console.log('This is the error: ', error)
   		})
   }
 
