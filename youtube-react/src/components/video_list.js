@@ -8,6 +8,7 @@ const VideoList = (props) => {
 			<VideoListItem 
 				key={video.etag}
 				video={video}
+				clicked={props.clicked}
 			/>
 		)
 	})

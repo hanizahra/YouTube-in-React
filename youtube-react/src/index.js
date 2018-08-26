@@ -36,13 +36,19 @@ class App extends Component {
   		})
   }
 
+  clickedVid = (video) => {
+  	this.setState({
+  		selectedVideo: video
+  	})
+  }
+
   render() {
 
     return (
       <div>
         <InputSearch />
         <VideoDetail selectedVideo={this.state.selectedVideo}/>
-        <VideoList videos={this.state.videos}/>
+        <VideoList clicked={this.clickedVid}  videos={this.state.videos}/>
       </div>
     );
   }

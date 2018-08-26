@@ -6,7 +6,7 @@ const VideoListItem = (props) => {
 	const title = props.video.snippet.title;
 
 	return (
-		<li className='list-group-item'>
+		<li onClick={() => {props.clicked(props.video)}} className='list-group-item'>
 			<div className='media-left'>
 				<img src={thumbnail}/>
 			</div>
