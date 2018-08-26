@@ -20,8 +20,8 @@ class App extends Component {
   	this.youTubeSearch();
   }
 
-  youTubeSearch() {
-  	axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&key=${API_KEY}&q=dogs`)
+  youTubeSearch(term) {
+  	axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&key=${API_KEY}&q=${term}`)
   		.then(response => {
   			console.log('this is the response ', response.data)
   			this.setState({
@@ -46,7 +46,7 @@ class App extends Component {
 
     return (
       <div>
-        <InputSearch />
+        <InputSearch searched={(term) => {this.youTubeSearch(term)}} />
         <VideoDetail selectedVideo={this.state.selectedVideo}/>
         <VideoList clicked={this.clickedVid}  videos={this.state.videos}/>
       </div>

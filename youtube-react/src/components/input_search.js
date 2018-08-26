@@ -14,6 +14,7 @@ class InputSearch extends Component {
 			term: event.target.value
 		})
 		console.log('this is term ', this.state.term)
+		this.props.searched(this.state.term)
 	}
 
 	render() {
