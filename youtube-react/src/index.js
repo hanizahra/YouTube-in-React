@@ -7,6 +7,7 @@ import registerServiceWorker from './registerServiceWorker';
 import InputSearch from './components/input_search';
 import VideoDetail from './components/video_detail';
 import VideoList from './components/video_list';
+import _ from 'lodash';
 dotenv.config()
 const API_KEY = process.env.REACT_APP_API_KEY
 
@@ -44,9 +45,11 @@ class App extends Component {
 
   render() {
 
+  	const throttledSearch = _.debounce((term) => {this.youTubeSearch(term)}, 3000)
+
     return (
       <div>
-        <InputSearch searched={(term) => {this.youTubeSearch(term)}} />
+        <InputSearch searched={throttledSearch} />
         <VideoDetail selectedVideo={this.state.selectedVideo}/>
         <VideoList clicked={this.clickedVid}  videos={this.state.videos}/>
       </div>
@@ -56,3 +59,5 @@ class App extends Component {
 
 ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();
+
+
