@@ -13,16 +13,15 @@ class InputSearch extends Component {
 		this.setState({
 			term: event.target.value
 		})
-		console.log('this is term ', this.state.term)
-		this.props.searched(this.state.term)
+		this.props.searched(event.target.value)
 	}
 
 	render() {
 		return (
 			<div className='search-bar'>
 				<input 
-					onChange={(event) => {this.inputHandler(event)}}
 					value={this.state.term}
+					onChange={(event) => {this.inputHandler(event)}}
 				/>
 			</div>
 		)

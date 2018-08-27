@@ -16,24 +16,24 @@ class App extends Component {
   	super(props);
   	this.state = {
   		videos: [],
-  		selectedVideo: null
+  		selectedVideo: null,
+  		searchTerm: 'cute puppies'
   	}
   	this.youTubeSearch();
   }
 
   youTubeSearch(term) {
-  	axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&key=${API_KEY}&q=${term}`)
+  	this.setState({
+  		searchTerm: term
+  	})
+  	axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&key=${API_KEY}&q=${this.state.searchTerm}`)
   		.then(response => {
-  			console.log('this is the response ', response.data)
   			this.setState({
   				videos: response.data.items,
   				selectedVideo: response.data.items[0]
   			})
-  			console.log('this is videos ', this.state.videos);
-  			console.log('this is selectedVideo ', this.state.selectedVideo);
   		})
   		.catch(error => {
-  			console.log('This is the error: ', error)
   		})
   }
 
@@ -45,7 +45,7 @@ class App extends Component {
 
   render() {
 
-  	const throttledSearch = _.debounce((term) => {this.youTubeSearch(term)}, 3000)
+  	const throttledSearch = _.debounce((term) => {this.youTubeSearch(term)}, 100)
 
     return (
       <div>
