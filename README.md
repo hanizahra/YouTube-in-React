@@ -18,5 +18,9 @@ Tech:
 * run `npm install`
 * run `yarn start`
 
+## Preview
+
+![Screenshot of App](/youtube-react/public/youtube-react-screenshot.png "Screenshot")
+
 
 
